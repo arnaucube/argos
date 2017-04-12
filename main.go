@@ -2,67 +2,14 @@ package main
 
 import (
 	"bufio"
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
-
-	"github.com/dghubble/go-twitter/twitter"
-	"github.com/dghubble/oauth1"
 )
-
-type Config struct {
-	Consumer_key        string `json:"consumer_key"`
-	Consumer_secret     string `json:"consumer_secret"`
-	Access_token_key    string `json:"access_token_key"`
-	Access_token_secret string `json:"access_token_secret"`
-}
-
-func readConfigTokensAndConnect() (client *twitter.Client) {
-	var config Config
-	file, e := ioutil.ReadFile("twitterConfig.json")
-	if e != nil {
-		fmt.Println("error:", e)
-	}
-	content := string(file)
-	json.Unmarshal([]byte(content), &config)
-	//fmt.Printf("%+v\n", config)
-	fmt.Println("twitterConfig.json read comlete")
-
-	fmt.Print("connecting to twitter api --> ")
-	configu := oauth1.NewConfig(config.Consumer_key, config.Consumer_secret)
-	token := oauth1.NewToken(config.Access_token_key, config.Access_token_secret)
-	httpClient := configu.Client(oauth1.NoContext, token)
-	// twitter client
-	client = twitter.NewClient(httpClient)
-
-	fmt.Println("connection successfull")
-
-	return client
-}
-
-func analyzeUsername(client *twitter.Client) {
-	newcommand := bufio.NewReader(os.Stdin)
-	fmt.Print("enter username: @")
-	username, _ := newcommand.ReadString('\n')
-	username = strings.TrimSpace(username)
-	fmt.Println("user selected: " + username)
-
-	// Home Timeline
-	user, resp, err := client.Users.Show(&twitter.UserShowParams{
-		ScreenName: username,
-	})
-	if err != nil {
-		fmt.Println("error:", err)
-	}
-	fmt.Println("%+v\n", user)
-	fmt.Println(resp)
-}
 
 func main() {
 	fmt.Println("---------------")
-	fmt.Println("Tweets and favs delete script. Starting.")
+	fmt.Println("goTweetsAnalyze initialized")
 	fmt.Println("Reading twitterConfig.json file")
 	client := readConfigTokensAndConnect()
 
