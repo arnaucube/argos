@@ -19,7 +19,7 @@ func printBar(n int) {
 
 func printDays(days map[string]int) {
 	for i := 0; i < len(week); i++ {
-		fmt.Print(week[i] + " - " + strconv.Itoa(days[week[i]]))
+		fmt.Print(week[i] + " - " + strconv.Itoa(days[week[i]]) + "tw")
 		fmt.Print("	")
 		printBar(days[week[i]])
 	}

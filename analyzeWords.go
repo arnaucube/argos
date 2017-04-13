@@ -49,4 +49,5 @@ func analyzeWords(tweets []twitter.Tweet) {
 	fmt.Println(len(words))
 	//get sorted list of frequency words
 	_ = sortMapWords(words)
+	fmt.Println(" ")
 }
