@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+const minNumWords = 4
+
 func main() {
 	fmt.Println("---------------")
 	fmt.Println("goTweetsAnalyze initialized")
@@ -28,7 +30,7 @@ option to select: `
 		switch option {
 		case "1":
 			fmt.Println("selected 1 - Analyze username")
-			analyzeUsername(client)
+			getUser(client)
 			break
 		case "2":
 			fmt.Println("selected 2 - Delete all Favs")

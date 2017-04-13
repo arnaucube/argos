@@ -1,7 +1,7 @@
 # goTweetsAnalyze
 twitter analyzer written in Go lang
 
-needs a .json file with the content:
+needs a twitterConfig.json file on the /build folder with the content:
 ```
 {
     "consumer_key": "xxxxxxxxxxxxxxxx",
