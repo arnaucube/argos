@@ -2,7 +2,9 @@
 twitter analyzer written in Go lang
 
 
-![Alt text](https://raw.githubusercontent.com/arnaucode/goTweetsAnalyze/master/screen1.png "screen")
+![Alt text](https://raw.githubusercontent.com/arnaucode/goTweetsAnalyze/master/screen3.png "screen")
+
+![Alt text](https://raw.githubusercontent.com/arnaucode/goTweetsAnalyze/master/screen2.png "screen")
 
 needs a twitterConfig.json file on the /build folder with the content:
 ```

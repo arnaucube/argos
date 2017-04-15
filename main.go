@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const minNumWords = 10
+const minNumWords = 3
 
 func main() {
 	fmt.Println("---------------")

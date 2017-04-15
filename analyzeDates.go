@@ -66,7 +66,9 @@ func analyzeHours(tweets []twitter.Tweet) {
 }
 
 func analyzeDates(tweets []twitter.Tweet) {
+	fmt.Println("Weekly activity distribution (per day)")
 	analyzeDays(tweets)
 	fmt.Println(" ")
+	fmt.Println("Daily activity distribution (per hour)")
 	analyzeHours(tweets)
 }
