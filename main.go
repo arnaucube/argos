@@ -11,7 +11,7 @@ const minNumWords = 3
 
 func main() {
 	fmt.Println("---------------")
-	fmt.Println("goTweetsAnalyze initialized")
+	fmt.Println("mgoTweetsAnalyze initialized")
 	fmt.Println("Reading twitterConfig.json file")
 	client := readConfigTokensAndConnect()
 

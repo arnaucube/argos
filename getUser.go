@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 
 	"github.com/dghubble/go-twitter/twitter"
@@ -18,6 +19,7 @@ func getUser(client *twitter.Client) {
 
 	fmt.Println("-----------------------")
 
+	//get tweets and analyze words and dates
 	tweets, _, _ := client.Timelines.UserTimeline(&twitter.UserTimelineParams{
 		ScreenName: username,
 		Count:      200,
@@ -27,6 +29,13 @@ func getUser(client *twitter.Client) {
 	analyzeWords(tweets)
 
 	analyzeDates(tweets)
+	fmt.Println("")
+	fmt.Println("Devices:")
+	sources := analyzeSource(tweets)
+	for k, v := range sources {
+		fmt.Print(k + ": ")
+		fmt.Println(strconv.Itoa(v) + "tw	")
+	}
 
 	fmt.Println(" ")
 	fmt.Print("first tweet analyzed: ")

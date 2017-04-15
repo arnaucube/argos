@@ -1,6 +1,13 @@
 # goTweetsAnalyze
-twitter analyzer written in Go lang
+twitter analyzer written in Go lang, insipired on the Python tweets_analyzer by x0rz https://github.com/x0rz/tweets_analyzer
 
+[under development]
+
+#### Current analysis
+- word count
+- weekly activity distribution
+- daily activity distribution
+- devices used
 
 ![Alt text](https://raw.githubusercontent.com/arnaucode/goTweetsAnalyze/master/screen3.png "screen")
 
@@ -24,4 +31,4 @@ to run it:
 ```
 ./goTweetsAnalyze
 ```
-- follow the instructions
+- follow the instructions that appears on the terminal
