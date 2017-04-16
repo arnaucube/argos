@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+const version = "0.1-dev"
 const minNumWords = 10
 const minNumHashtag = 2
 const iterationsCount = 3
@@ -15,7 +16,10 @@ func main() {
 	fmt.Println("---------------")
 	fmt.Print("\x1b[36;1m") //cyan
 	fmt.Println("goTweetsAnalyze initialized")
+	fmt.Print("\x1b[35;1m") //cyan
+	fmt.Println("https://github.com/arnaucode/goTweetsAnalyze")
 	fmt.Print("\x1b[0m") //defaultColor
+	fmt.Println("version " + version)
 	fmt.Println("Reading twitterConfig.json file")
 	client := readConfigTokensAndConnect()
 	fmt.Println("---------------")
