@@ -26,10 +26,9 @@ func getTweets(client *twitter.Client, username string, iterations int) []twitte
 		}
 	}
 
-	fmt.Println("total of " + strconv.Itoa(len(tweets)) + " tweets")
 	return tweets
 }
-func getUser(client *twitter.Client) {
+func getUserTweets(client *twitter.Client) {
 	newcommand := bufio.NewReader(os.Stdin)
 	fmt.Print("enter username: @")
 	username, _ := newcommand.ReadString('\n')
@@ -39,7 +38,7 @@ func getUser(client *twitter.Client) {
 	fmt.Println("-----------------------")
 
 	//get tweets
-	tweets := getTweets(client, username, 2)
+	tweets := getTweets(client, username, iterationsCount)
 
 	//now analyze words and dates
 	fmt.Println("word count")
@@ -60,6 +59,8 @@ func getUser(client *twitter.Client) {
 	fmt.Print("last tweet analyzed: ")
 	fmt.Println(tweets[0].CreatedAt)
 
+	fmt.Println(" ")
+	fmt.Println("total of " + strconv.Itoa(len(tweets)) + " tweets")
 	fmt.Println(" ")
 	fmt.Println("User @" + username + " analysis finished")
 }

@@ -8,10 +8,11 @@ import (
 )
 
 const minNumWords = 10
+const iterationsCount = 3
 
 func main() {
 	fmt.Println("---------------")
-	fmt.Println("mgoTweetsAnalyze initialized")
+	fmt.Println("goTweetsAnalyze initialized")
 	fmt.Println("Reading twitterConfig.json file")
 	client := readConfigTokensAndConnect()
 
@@ -30,7 +31,7 @@ option to select: `
 		switch option {
 		case "1":
 			fmt.Println("selected 1 - Analyze username")
-			getUser(client)
+			getUserTweets(client)
 			break
 		case "2":
 			fmt.Println("selected 2 - Delete all Favs")

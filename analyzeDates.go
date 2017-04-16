@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -10,18 +11,49 @@ import (
 
 var week = [7]string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
 
-func printBar(n int) {
-	for i := 0; i < n; i++ {
+func printBar(n int, lowest int, highest int) {
+	bar := int((float64(n) / float64(highest)) * 50)
+
+	if n == lowest {
+		fmt.Print("\x1b[36;1m")
+	}
+	if n == highest {
+		fmt.Print("\x1b[31;1m")
+	}
+
+	for i := 0; i < bar; i++ {
 		fmt.Print("█")
 	}
+
+	if bar == 0 && n > 0 {
+		fmt.Print("█")
+	}
+	if n == lowest {
+		fmt.Print("	lowest")
+	}
+	if n == highest {
+		fmt.Print("	highest")
+	}
+	fmt.Print("\x1b[0m")
 	fmt.Println(" ")
+}
+func getHigherValueOfMap(m map[string]int) (int, int) {
+	var values []int
+	for _, v := range m {
+		values = append(values, v)
+	}
+	sort.Ints(values)
+	//returns lower, higher values
+	return values[0], values[len(values)-1]
 }
 
 func printDays(days map[string]int) {
+	lowest, highest := getHigherValueOfMap(days)
+
 	for i := 0; i < len(week); i++ {
 		fmt.Print(week[i] + " - " + strconv.Itoa(days[week[i]]) + "tw")
 		fmt.Print("	")
-		printBar(days[week[i]])
+		printBar(days[week[i]], lowest, highest)
 	}
 }
 func analyzeDays(tweets []twitter.Tweet) {
@@ -39,6 +71,8 @@ func analyzeDays(tweets []twitter.Tweet) {
 }
 
 func printHours(hours map[string]int) {
+	lowest, highest := getHigherValueOfMap(hours)
+
 	for i := 0; i < 24; i++ {
 		var h string
 		if i < 10 {
@@ -48,7 +82,7 @@ func printHours(hours map[string]int) {
 		}
 		fmt.Print(h + "h	-	" + strconv.Itoa(hours[h]) + "tw")
 		fmt.Print("	")
-		printBar(hours[h])
+		printBar(hours[h], lowest, highest)
 	}
 }
 func analyzeHours(tweets []twitter.Tweet) {
