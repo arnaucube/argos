@@ -12,13 +12,13 @@ import (
 var week = [7]string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
 
 func printBar(n int, lowest int, highest int) {
-	bar := int((float64(n) / float64(highest)) * 50)
+	bar := int((float64(n) / float64(highest)) * 40)
 
 	if n == lowest {
-		fmt.Print("\x1b[36;1m")
+		fmt.Print("\x1b[36;1m") //cyan
 	}
 	if n == highest {
-		fmt.Print("\x1b[31;1m")
+		fmt.Print("\x1b[31;1m") //red
 	}
 
 	for i := 0; i < bar; i++ {
@@ -34,7 +34,7 @@ func printBar(n int, lowest int, highest int) {
 	if n == highest {
 		fmt.Print("	highest")
 	}
-	fmt.Print("\x1b[0m")
+	fmt.Print("\x1b[0m") //defaultColor
 	fmt.Println(" ")
 }
 func getHigherValueOfMap(m map[string]int) (int, int) {

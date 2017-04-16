@@ -19,6 +19,10 @@ func getTweets(client *twitter.Client, username string, iterations int) []twitte
 			Count:      200,
 			MaxID:      maxid,
 		})
+		//if no tweets, stop getting tweets
+		if len(tweetsRaw) == 0 {
+			break
+		}
 		maxid = tweetsRaw[len(tweetsRaw)-1].ID
 
 		for _, v := range tweetsRaw {
@@ -33,23 +37,34 @@ func getUserTweets(client *twitter.Client) {
 	fmt.Print("enter username: @")
 	username, _ := newcommand.ReadString('\n')
 	username = strings.TrimSpace(username)
-	fmt.Println("user selected: " + username)
-
+	fmt.Println("user selected: \x1b[36;1m@" + username)
+	fmt.Print("\x1b[0m") //defaultColor
 	fmt.Println("-----------------------")
 
 	//get tweets
 	tweets := getTweets(client, username, iterationsCount)
 
+	if len(tweets) == 0 {
+		fmt.Println("User @" + username + " does not have tweets")
+		return
+	}
 	//now analyze words and dates
-	fmt.Println("word count")
-	analyzeWords(tweets)
+	fmt.Println("Word frequency (more than " + strconv.Itoa(minNumWords) + " times):")
+	words := analyzeWords(tweets)
+
+	fmt.Println("Hashtags used (more than " + strconv.Itoa(minNumHashtag) + " times): ")
+	hashtags := analyzeHashtags(tweets, words)
+	printSortedMapStringInt(hashtags, minNumHashtag)
+	fmt.Println("")
 
 	analyzeDates(tweets)
 	fmt.Println("")
 	fmt.Println("Devices:")
 	sources := analyzeSource(tweets)
 	for k, v := range sources {
+		fmt.Print("\x1b[32;1m") //cyan
 		fmt.Print(k + ": ")
+		fmt.Print("\x1b[0m") //defaultColor
 		fmt.Println(strconv.Itoa(v) + "tw	")
 	}
 
@@ -60,7 +75,7 @@ func getUserTweets(client *twitter.Client) {
 	fmt.Println(tweets[0].CreatedAt)
 
 	fmt.Println(" ")
-	fmt.Println("total of " + strconv.Itoa(len(tweets)) + " tweets")
+	fmt.Println("Total of " + strconv.Itoa(len(tweets)) + " tweets analyzed")
 	fmt.Println(" ")
 	fmt.Println("User @" + username + " analysis finished")
 }
