@@ -10,6 +10,25 @@ import (
 	"github.com/dghubble/go-twitter/twitter"
 )
 
+func getTweets(client *twitter.Client, username string, iterations int) []twitter.Tweet {
+	var tweets []twitter.Tweet
+	var maxid int64
+	for i := 0; i < iterations; i++ {
+		tweetsRaw, _, _ := client.Timelines.UserTimeline(&twitter.UserTimelineParams{
+			ScreenName: username,
+			Count:      200,
+			MaxID:      maxid,
+		})
+		maxid = tweetsRaw[len(tweetsRaw)-1].ID
+
+		for _, v := range tweetsRaw {
+			tweets = append(tweets, v)
+		}
+	}
+
+	fmt.Println("total of " + strconv.Itoa(len(tweets)) + " tweets")
+	return tweets
+}
 func getUser(client *twitter.Client) {
 	newcommand := bufio.NewReader(os.Stdin)
 	fmt.Print("enter username: @")
@@ -19,12 +38,10 @@ func getUser(client *twitter.Client) {
 
 	fmt.Println("-----------------------")
 
-	//get tweets and analyze words and dates
-	tweets, _, _ := client.Timelines.UserTimeline(&twitter.UserTimelineParams{
-		ScreenName: username,
-		Count:      200,
-	})
+	//get tweets
+	tweets := getTweets(client, username, 2)
 
+	//now analyze words and dates
 	fmt.Println("word count")
 	analyzeWords(tweets)
 
