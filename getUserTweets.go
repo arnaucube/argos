@@ -37,8 +37,8 @@ func getUserTweets(client *twitter.Client) {
 	fmt.Print("enter username: @")
 	username, _ := newcommand.ReadString('\n')
 	username = strings.TrimSpace(username)
-	fmt.Println("user selected: \x1b[36;1m@" + username)
-	fmt.Print("\x1b[0m") //defaultColor
+	fmt.Print("user selected: ")
+	c.Cyan("@" + username)
 	fmt.Println("-----------------------")
 
 	//get tweets
@@ -77,5 +77,7 @@ func getUserTweets(client *twitter.Client) {
 	fmt.Println(" ")
 	fmt.Println("Total of " + strconv.Itoa(len(tweets)) + " tweets analyzed")
 	fmt.Println(" ")
-	fmt.Println("User @" + username + " analysis finished")
+	fmt.Print("User @")
+	c.Cyan(username)
+	fmt.Println(" analysis finished")
 }

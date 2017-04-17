@@ -27,6 +27,7 @@ func main() {
 	fmt.Print("Please select command number")
 	options := `
 	1 - Analyze username
+	2 - Delete Tweets
 	0 - Exit script
 option to select: `
 	for {
@@ -41,10 +42,8 @@ option to select: `
 			getUserTweets(client)
 			break
 		case "2":
-			fmt.Println("selected 2 - Delete all Favs")
-			break
-		case "3":
-			fmt.Println("selected 3 - Delete all Tweets and Favs")
+			fmt.Println("selected 2 - Delete Tweets")
+			deleteTweetsAndFavs(client)
 			break
 		case "0":
 			fmt.Println("selected 0 - exit script")
