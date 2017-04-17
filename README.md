@@ -1,17 +1,27 @@
 # goTweetsAnalyze
 twitter analyzer written in Go lang, insipired on the Python tweets_analyzer by x0rz https://github.com/x0rz/tweets_analyzer
 
+#### Argus Panoptes
+https://en.wikipedia.org/wiki/Argus_Panoptes
+
+https://en.wikipedia.org/wiki/Panopticon
+
+
+![Argus](https://raw.githubusercontent.com/arnaucode/argus/master/argus.jpg "argus")
+
 [under development]
 
-#### Current analysis
-- word count
-- weekly activity distribution
-- daily activity distribution
-- devices used
+#### Current features
+- User analyzer
+    - word count
+    - weekly activity distribution
+    - daily activity distribution
+    - devices used
+- Delete Tweets and Favs
 
-![Alt text](https://raw.githubusercontent.com/arnaucode/goTweetsAnalyze/master/screen3.png "screen")
+![screen](https://raw.githubusercontent.com/arnaucode/argus/master/screen3.png "screen")
 
-![Alt text](https://raw.githubusercontent.com/arnaucode/goTweetsAnalyze/master/screen2.png "screen")
+![screen](https://raw.githubusercontent.com/arnaucode/argus/master/screen2.png "screen")
 
 needs a twitterConfig.json file on the /build folder with the content:
 ```
@@ -29,6 +39,6 @@ to run it:
 - open terminal
 - execute the script with:
 ```
-./goTweetsAnalyze
+./argus
 ```
 - follow the instructions that appears on the terminal

@@ -35,11 +35,15 @@ func getAndPrintUserData(client *twitter.Client) *twitter.User {
 }
 func deleteTweets(client *twitter.Client, user *twitter.User) {
 	tweets := getTweets(client, user.ScreenName, iterationsCount)
+	count := 0
+	fmt.Println(tweets)
 	for _, v := range tweets {
 		c.Red("deleting: [id: " + v.IDStr + "] " + v.Text)
 		deleted, _, _ := client.Statuses.Destroy(v.ID, nil)
-		c.Green("deleting: [id: " + deleted.IDStr + "] " + deleted.Text)
+		c.Green("DELETED: [id: " + deleted.IDStr + "] " + deleted.Text)
+		count++
 	}
+	c.Red("Deleted " + strconv.Itoa(count) + " tweets")
 }
 func deleteFavs(client *twitter.Client) {
 
