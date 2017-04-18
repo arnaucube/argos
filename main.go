@@ -13,10 +13,10 @@ const minNumHashtag = 2
 const iterationsCount = 3
 
 func main() {
-	c.DarkGray("Argus Panoptes")
+	c.Yellow("Argos Panoptes")
 	fmt.Println("---------------")
-	c.Cyan("argus initialized")
-	c.Purple("https://github.com/arnaucode/argus")
+	c.Cyan("argos initialized")
+	c.Purple("https://github.com/arnaucode/argos")
 	fmt.Println("version " + version)
 	fmt.Println("Reading twitterConfig.json file")
 	client := readConfigTokensAndConnect()
@@ -25,7 +25,9 @@ func main() {
 	fmt.Print("Please select command number")
 	options := `
 	1 - Analyze username
-	2 - Delete Tweets
+	2 - Delete Tweets & Rretweets
+	3 - Unfollow all
+	4 - Follow random
 	0 - Exit script
 option to select: `
 	for {
@@ -37,11 +39,19 @@ option to select: `
 		switch option {
 		case "1":
 			fmt.Println("selected 1 - Analyze username")
-			getUserTweets(client)
+			optionGetUserTweets(client)
 			break
 		case "2":
 			fmt.Println("selected 2 - Delete Tweets")
-			deleteTweetsAndFavs(client)
+			optionDeleteTweets(client)
+			break
+		case "3":
+			fmt.Println("selected 3 - Unfollow all")
+			optionUnfollowAll(client)
+			break
+		case "4":
+			fmt.Println("selected 4 - Follow random")
+			optionFollowRandom(client)
 			break
 		case "0":
 			fmt.Println("selected 0 - exit script")

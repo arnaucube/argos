@@ -32,7 +32,7 @@ func getTweets(client *twitter.Client, username string, iterations int) []twitte
 
 	return tweets
 }
-func getUserTweets(client *twitter.Client) {
+func optionGetUserTweets(client *twitter.Client) {
 	newcommand := bufio.NewReader(os.Stdin)
 	fmt.Print("enter username: @")
 	username, _ := newcommand.ReadString('\n')
