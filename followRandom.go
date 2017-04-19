@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/dghubble/go-twitter/twitter"
 )
@@ -43,6 +44,10 @@ func followRandom(client *twitter.Client, nFollow int, screenName string) {
 		userToFollow := getUserToFollowFromUser(client, screenName)
 		followUser(client, userToFollow)
 		screenName = userToFollow
+		//wait to avoid the twitter api limitation
+		fmt.Println("waiting 1 min to avoid twitter api limitation")
+		fmt.Println(time.Now().Local())
+		time.Sleep(1 * time.Minute)
 	}
 
 }

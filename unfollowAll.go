@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/dghubble/go-twitter/twitter"
 )
@@ -17,12 +18,13 @@ func printUserFollowsData(user *twitter.User) {
 	c.Cyan(strconv.Itoa(user.FriendsCount))
 }
 func unfollowUser(client *twitter.Client, screenName string) {
-	_, httpResp, _ := client.Friendships.Destroy(&twitter.FriendshipDestroyParams{
+	user, httpResp, _ := client.Friendships.Destroy(&twitter.FriendshipDestroyParams{
 		ScreenName: screenName,
 	})
 	if httpResp.Status != "200 OK" {
 		c.Red(httpResp.Status)
 	}
+	c.Green(user.ScreenName)
 }
 func getFollowingUsers(client *twitter.Client, user *twitter.User) {
 	following, httpResp, err := client.Friends.List(&twitter.FriendListParams{
@@ -35,9 +37,13 @@ func getFollowingUsers(client *twitter.Client, user *twitter.User) {
 	if httpResp.Status != "200 OK" {
 		c.Red(httpResp.Status)
 	}
-	fmt.Println(following)
+	//fmt.Println(following)
 	for _, k := range following.Users {
 		unfollowUser(client, k.ScreenName)
+		//wait to avoid the twitter api limitation
+		fmt.Println("waiting 1 min to avoid twitter api limitation")
+		fmt.Println(time.Now().Local())
+		time.Sleep(1 * time.Minute)
 	}
 }
 func optionUnfollowAll(client *twitter.Client) {
