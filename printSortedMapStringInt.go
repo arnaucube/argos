@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 	"sort"
+	"strconv"
 )
 
 func printSortedMapStringInt(m map[string]int, threshold int) map[int][]string {
+	total := len(m)
+	fmt.Println("total: " + strconv.Itoa(total))
 	n := map[int][]string{}
 	var a []int
 	for k, v := range m {
@@ -19,7 +22,8 @@ func printSortedMapStringInt(m map[string]int, threshold int) map[int][]string {
 	sort.Sort(sort.Reverse(sort.IntSlice(a)))
 	for _, k := range a {
 		for _, s := range n[k] {
-			fmt.Printf("%d - %s,\n", k, s)
+			//fmt.Printf("%d (%d)- %s,\n", k, tantPerCent, s)
+			fmt.Println(strconv.Itoa(k) + " - " + s)
 		}
 	}
 	return n

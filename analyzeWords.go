@@ -26,7 +26,6 @@ func analyzeWords(tweets []twitter.Tweet) map[string]int {
 		words = mapWords(v.Text, words)
 	}
 
-	fmt.Println(len(words))
 	//get sorted list of frequency words
 	_ = printSortedMapStringInt(words, minNumWords)
 	fmt.Println(" ")

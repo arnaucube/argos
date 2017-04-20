@@ -1,3 +1,5 @@
+http://arnaucode.com/argos/
+
 # argos
 twitter analyzer written in Go lang, insipired on the Python tweets_analyzer by x0rz https://github.com/x0rz/tweets_analyzer
 
@@ -13,18 +15,18 @@ https://en.wikipedia.org/wiki/Panopticon
 
 #### Current features
 1. User analyzer
-    - word count
-    - weekly activity distribution
-    - daily activity distribution
-    - devices used
-    - hashtags most used count
-    - user mentions coun [not implemented yet]
-2. Delete Tweets and Favs
-3. Unfollow all [not implemented yet]
-4. Random follow [not implemented yet]
+    - Word count
+    - Weekly activity distribution
+    - Daily activity distribution
+    - Devices used
+    - Hashtags most used count
+    - Interactions with other users count
+2. Delete Tweets
+3. Unfollow all
+4. Random follow
     - selects n number of accounts to follow, and follows n random accounts
-5. Random tweet [not implemented yet]
-    - post a tweet with random content (from newspaper)
+5. Random tweet
+    - post a tweet with content from a selected account
 
 ![screen](https://raw.githubusercontent.com/arnaucode/argos/master/screen3.png "screen")
 

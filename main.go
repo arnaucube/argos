@@ -10,7 +10,8 @@ import (
 const version = "0.1-dev"
 const minNumWords = 10
 const minNumHashtag = 2
-const iterationsCount = 3
+const minNumUserInteractions = 1
+const iterationsCount = 1
 
 func main() {
 	c.Yellow("Argos Panoptes")
@@ -25,9 +26,10 @@ func main() {
 	fmt.Print("Please select command number")
 	options := `
 	1 - Analyze username
-	2 - Delete Tweets & Rretweets
-	3 - Unfollow all
-	4 - Follow random
+	2 - Unfollow all
+	3 - Follow random
+	4 - Delete Tweets
+	5 - Tweet Random
 	0 - Exit script
 option to select: `
 	for {
@@ -42,16 +44,20 @@ option to select: `
 			optionGetUserTweets(client)
 			break
 		case "2":
-			fmt.Println("selected 2 - Delete Tweets")
-			optionDeleteTweets(client)
-			break
-		case "3":
-			fmt.Println("selected 3 - Unfollow all")
+			fmt.Println("selected 2 - Unfollow all")
 			optionUnfollowAll(client)
 			break
-		case "4":
-			fmt.Println("selected 4 - Follow random")
+		case "3":
+			fmt.Println("selected 3 - Follow random")
 			optionFollowRandom(client)
+			break
+		case "4":
+			fmt.Println("selected 4 - Delete Tweets")
+			optionDeleteTweets(client)
+			break
+		case "5":
+			fmt.Println("selected 5 - Tweet random")
+			optionTweetRandom(client)
 			break
 		case "0":
 			fmt.Println("selected 0 - exit script")
