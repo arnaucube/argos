@@ -17,6 +17,7 @@ func postTweet(client *twitter.Client, content string) {
 	}
 	if httpResp.Status != "200 OK" {
 		c.Red("error: " + httpResp.Status)
+		c.Purple("maybe twitter has blocked the account, CTRL+C, wait 15 minutes and try again")
 	}
 	fmt.Print("tweet posted: ")
 	c.Green(tweet.Text)

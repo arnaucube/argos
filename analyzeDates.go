@@ -59,7 +59,6 @@ func printDays(days map[string]int) {
 func analyzeDays(tweets []twitter.Tweet) {
 	var days = make(map[string]int)
 	for _, v := range tweets {
-		//fmt.Println(v.CreatedAt)
 		day := strings.Split(v.CreatedAt, " ")[0]
 		if _, ok := days[day]; ok {
 			days[day] = days[day] + 1

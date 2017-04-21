@@ -1,6 +1,6 @@
 http://arnaucode.com/argos/
 
-# argos
+# argos [![Go Report Card](https://goreportcard.com/badge/github.com/arnaucode/argos)](https://goreportcard.com/report/github.com/arnaucode/argos)
 twitter analyzer written in Go lang, insipired on the Python tweets_analyzer by x0rz https://github.com/x0rz/tweets_analyzer
 
 #### Argos Panoptes
@@ -21,10 +21,10 @@ https://en.wikipedia.org/wiki/Panopticon
     - Devices used
     - Hashtags most used count
     - Interactions with other users count
-2. Delete Tweets
-3. Unfollow all
-4. Random follow
+2. Unfollow all
+3. Random follow
     - selects n number of accounts to follow, and follows n random accounts
+4. Delete Tweets
 5. Random tweet
     - post a tweet with content from a selected account
 

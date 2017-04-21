@@ -37,7 +37,6 @@ func getFollowingUsers(client *twitter.Client, user *twitter.User) {
 	if httpResp.Status != "200 OK" {
 		c.Red(httpResp.Status)
 	}
-	//fmt.Println(following)
 	for _, k := range following.Users {
 		unfollowUser(client, k.ScreenName)
 		//wait to avoid the twitter api limitation

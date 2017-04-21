@@ -24,7 +24,6 @@ func readConfigTokensAndConnect() (client *twitter.Client) {
 	}
 	content := string(file)
 	json.Unmarshal([]byte(content), &config)
-	//fmt.Printf("%+v\n", config)
 	fmt.Println("twitterConfig.json read comlete")
 
 	fmt.Print("connecting to twitter api --> ")

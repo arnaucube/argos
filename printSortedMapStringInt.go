@@ -22,7 +22,6 @@ func printSortedMapStringInt(m map[string]int, threshold int) map[int][]string {
 	sort.Sort(sort.Reverse(sort.IntSlice(a)))
 	for _, k := range a {
 		for _, s := range n[k] {
-			//fmt.Printf("%d (%d)- %s,\n", k, tantPerCent, s)
 			fmt.Println(strconv.Itoa(k) + " - " + s)
 		}
 	}

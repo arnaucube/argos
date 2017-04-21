@@ -28,9 +28,8 @@ func getUserToFollowFromUser(client *twitter.Client, fromUser string) string {
 	}
 	if httpResp.Status != "200 OK" {
 		c.Red(httpResp.Status)
+		c.Purple("maybe twitter has blocked the account, CTRL+C, wait 15 minutes and try again")
 	}
-	//fmt.Println(friends.Users)
-	//c.Green("@" + friends.Users[0].ScreenName)
 	return friends.Users[0].ScreenName
 }
 
@@ -44,7 +43,6 @@ func followUser(client *twitter.Client, screenName string) {
 
 func followRandom(client *twitter.Client, nFollow int, screenName string) {
 	fmt.Println("Starting to follow " + strconv.Itoa(nFollow) + " users")
-	//screenName := firstScreenName
 	for i := 0; i < nFollow; i++ {
 		userToFollow := getUserToFollowFromUser(client, screenName)
 		followUser(client, userToFollow)

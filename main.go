@@ -11,7 +11,7 @@ const version = "0.1-dev"
 const minNumWords = 10
 const minNumHashtag = 2
 const minNumUserInteractions = 1
-const iterationsCount = 1
+const iterationsCount = 3
 
 func main() {
 	c.Yellow("Argos Panoptes")
