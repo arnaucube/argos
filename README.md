@@ -1,7 +1,11 @@
 http://arnaucode.com/argos/
 
 # argos [![Go Report Card](https://goreportcard.com/badge/github.com/arnaucode/argos)](https://goreportcard.com/report/github.com/arnaucode/argos)
-twitter analyzer written in Go lang, insipired on the Python tweets_analyzer by x0rz https://github.com/x0rz/tweets_analyzer
+Open source twitter entropic toolkit. The main idea is to analyze, clean and generate public data, to add more entropy to the network.
+
+Be half bot and half human, a new generation of cyborgs
+
+The user analyzer features are insipired on the Python tweets_analyzer by x0rz https://github.com/x0rz/tweets_analyzer
 
 #### Argos Panoptes
 https://en.wikipedia.org/wiki/Argus_Panoptes
