@@ -21,7 +21,13 @@ func main() {
 	fmt.Println("version " + version)
 	fmt.Println("Reading twitterConfig.json file")
 	client := readConfigTokensAndConnect()
+
 	fmt.Println("---------------")
+	fmt.Println("Getting user data...")
+	user := getUserData(client)
+	printUserData(user)
+	fmt.Println("")
+
 	newcommand := bufio.NewReader(os.Stdin)
 	fmt.Print("Please select command number")
 	options := `
@@ -29,7 +35,8 @@ func main() {
 	2 - Unfollow all
 	3 - Follow random
 	4 - Delete Tweets
-	5 - Tweet Random
+	5 - Delete Favs (Likes)
+	6 - Tweet Random
 	0 - Exit script
 option to select: `
 	for {
@@ -41,7 +48,7 @@ option to select: `
 		switch option {
 		case "1":
 			fmt.Println("selected 1 - Analyze username")
-			optionGetUserTweets(client)
+			optionAnalyzeUserTweets(client)
 			break
 		case "2":
 			fmt.Println("selected 2 - Unfollow all")
@@ -56,6 +63,10 @@ option to select: `
 			optionDeleteTweets(client)
 			break
 		case "5":
+			fmt.Println("selected 5 - Delete Favs (Likes)")
+			optionDeleteFavs(client)
+			break
+		case "6":
 			fmt.Println("selected 5 - Tweet random")
 			optionTweetRandom(client)
 			break

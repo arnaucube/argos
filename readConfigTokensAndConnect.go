@@ -9,6 +9,7 @@ import (
 	"github.com/dghubble/oauth1"
 )
 
+//Config stores the data from json twitterConfig.json file
 type Config struct {
 	Consumer_key        string `json:"consumer_key"`
 	Consumer_secret     string `json:"consumer_secret"`
