@@ -29,7 +29,8 @@ https://en.wikipedia.org/wiki/Panopticon
 3. Random follow
     - selects n number of accounts to follow, and follows n random accounts
 4. Delete Tweets
-5. Random tweet
+5. Delete Favs (Likes)
+6. Random tweet
     - post a tweet with content from a selected account
 
 ![screen](https://raw.githubusercontent.com/arnaucode/argos/master/screen3.png "screen")

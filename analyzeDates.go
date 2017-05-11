@@ -89,11 +89,12 @@ func analyzeHours(tweets []twitter.Tweet) {
 	for _, v := range tweets {
 		time := strings.Split(v.CreatedAt, " ")[3]
 		hour := strings.Split(time, ":")[0]
-		if _, ok := hours[hour]; ok {
+		/*if _, ok := hours[hour]; ok {
 			hours[hour] = hours[hour] + 1
 		} else {
 			hours[hour] = 1
-		}
+		}*/
+		hours[hour]++
 	}
 	printHours(hours)
 }

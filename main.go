@@ -18,6 +18,7 @@ func main() {
 	fmt.Println("---------------")
 	c.Cyan("argos initialized")
 	c.Purple("https://github.com/arnaucode/argos")
+	c.Purple("http://arnaucode/argos")
 	fmt.Println("version " + version)
 	fmt.Println("Reading twitterConfig.json file")
 	client := readConfigTokensAndConnect()
@@ -26,6 +27,10 @@ func main() {
 	fmt.Println("Getting user data...")
 	user := getUserData(client)
 	printUserData(user)
+	if user.ScreenName == "" {
+		c.Red("Can not connect to Twitter API, maybe the file twitterConfig.json is wrong")
+		os.Exit(3)
+	}
 	fmt.Println("")
 
 	newcommand := bufio.NewReader(os.Stdin)
@@ -49,6 +54,8 @@ option to select: `
 		case "1":
 			fmt.Println("selected 1 - Analyze username")
 			optionAnalyzeUserTweets(client)
+			fmt.Println("")
+			c.Purple("Note: the current hours displaying, are the Twitter servers hours (Coordinated Universal Time (UTC) +0000 UTC)")
 			break
 		case "2":
 			fmt.Println("selected 2 - Unfollow all")
