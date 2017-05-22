@@ -7,23 +7,47 @@ import (
 	"strings"
 )
 
-const version = "0.1-dev"
+const version = "0.2-beta"
 const minNumWords = 10
 const minNumHashtag = 2
 const minNumUserInteractions = 1
 const iterationsCount = 3
 
 func main() {
-	c.Yellow("Argos Panoptes")
+	eye := `
+                ___________
+            .-=d88888888888b=-.
+        .:d8888pr |\|/-\| rq8888b.
+      ,:d8888P^//\-\/_\ /_\/^q888/b.
+    ,;d88888/~-/ .-~  _~-. |/-q88888b,
+   //8888887-\ _/    (#)  \\-\/Y88888b\
+   \8888888|// T           Y _/|888888 o
+    \q88888|- \l           !\_/|88888p/
+      q8888l\-//\         / /\|!8888P
+        q888\/-|  -,___.-^\/-\/888P
+          =88\./-/|/ |-/!\/-!/88=
+            ^^ ------------- ^
+           _____   _____  ____   _____
+     /\   |  __ \ / ____|/ __ \ / ____|
+    /  \  | |__) | |  __| |  | | (___
+   / /\ \ |  _  /| | |_ | |  | |\___ \
+  / ____ \| | \ \| |__| | |__| |____) |
+ /_/    \_\_|  \_\\_____|\____/|_____/
+
+ Open source twitter entropic toolkit
+	`
+	c.Cyan(eye)
+	c.DarkGray("--Be half bot and half human, a new generation of cyborgs--")
 	fmt.Println("---------------")
-	c.Cyan("argos initialized")
+	fmt.Print("source code: ")
 	c.Purple("https://github.com/arnaucode/argos")
+	fmt.Print("project page: ")
 	c.Purple("http://arnaucode/argos")
-	fmt.Println("version " + version)
-	fmt.Println("Reading twitterConfig.json file")
+	fmt.Print("version ")
+	c.Purple(version)
+	fmt.Println("---------------")
 	client := readConfigTokensAndConnect()
 
-	fmt.Println("---------------")
 	fmt.Println("Getting user data...")
 	user := getUserData(client)
 	printUserData(user)
