@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const version = "0.2-beta"
+const version = "0.3-beta"
 const minNumWords = 10
 const minNumHashtag = 2
 const minNumUserInteractions = 1

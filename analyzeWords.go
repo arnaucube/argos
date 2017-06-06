@@ -11,7 +11,15 @@ func mapWords(text string, words map[string]int) map[string]int {
 	s := strings.Split(text, " ")
 
 	for _, v := range s {
+		//first, remove punctuation symbols
+		v = strings.Replace(v, ":", "", -1)
+		v = strings.Replace(v, ",", "", -1)
+		v = strings.Replace(v, ".", "", -1)
+		v = strings.Replace(v, "!", "", -1)
+		v = strings.Replace(v, "?", "", -1)
+		v = strings.Replace(v, "\n", "", -1)
 		if _, ok := words[v]; ok {
+			fmt.Println(v)
 			words[v] = words[v] + 1
 		} else {
 			words[v] = 1
