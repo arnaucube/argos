@@ -10,7 +10,7 @@ import (
 const version = "0.3-beta"
 const minNumWords = 10
 const minNumHashtag = 2
-const minNumUserInteractions = 1
+const minNumUserInteractions = 2
 const iterationsCount = 3
 
 func main() {

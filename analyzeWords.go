@@ -18,8 +18,8 @@ func mapWords(text string, words map[string]int) map[string]int {
 		v = strings.Replace(v, "!", "", -1)
 		v = strings.Replace(v, "?", "", -1)
 		v = strings.Replace(v, "\n", "", -1)
+		v = strings.Replace(v, "…", "", -1)
 		if _, ok := words[v]; ok {
-			fmt.Println(v)
 			words[v] = words[v] + 1
 		} else {
 			words[v] = 1
