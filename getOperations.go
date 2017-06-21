@@ -84,3 +84,14 @@ func printUserData(user *twitter.User) {
 	fmt.Print("number of favs: ")
 	c.Purple(strconv.Itoa(user.FavouritesCount))
 }
+
+func getRetweets(client *twitter.Client, tweetId int64) []twitter.Tweet {
+	var tweets []twitter.Tweet
+	tweets, _, err := client.Statuses.Retweets(tweetId, &twitter.StatusRetweetsParams{
+		Count: 200,
+	})
+	if err != nil {
+		fmt.Println(err)
+	}
+	return tweets
+}

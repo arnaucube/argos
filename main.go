@@ -66,6 +66,7 @@ func main() {
 	4 - Delete Tweets
 	5 - Delete Favs (Likes)
 	6 - Tweet Random
+	7 - Analyze tweet
 	0 - Exit script
 option to select: `
 	for {
@@ -98,8 +99,12 @@ option to select: `
 			optionDeleteFavs(client)
 			break
 		case "6":
-			fmt.Println("selected 5 - Tweet random")
+			fmt.Println("selected 6 - Tweet random")
 			optionTweetRandom(client)
+			break
+		case "7":
+			fmt.Println("selected 7 - Analyze Tweet")
+			optionAnalyzeTweet(client)
 			break
 		case "0":
 			fmt.Println("selected 0 - exit script")
