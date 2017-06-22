@@ -37,6 +37,32 @@ func printBar(n int, lowest int, highest int) {
 	fmt.Print("\x1b[0m") //defaultColor
 	fmt.Println(" ")
 }
+func printBarRetweets(n int, lowest int, highest int) {
+	bar := int((float64(n) / float64(highest)) * 40)
+
+	if n == lowest {
+		fmt.Print("\x1b[36;1m") //cyan
+	}
+	if n == highest {
+		fmt.Print("\x1b[31;1m") //red
+	}
+
+	for i := 0; i < bar; i++ {
+		fmt.Print("█")
+	}
+
+	if bar == 0 && n > 0 {
+		fmt.Print("█")
+	}
+	if n == lowest {
+		//fmt.Print("	lowest")
+	}
+	if n == highest {
+		fmt.Print("	possible bots")
+	}
+	fmt.Print("\x1b[0m") //defaultColor
+	fmt.Println(" ")
+}
 func getHigherValueOfMap(m map[string]int) (int, int) {
 	var values []int
 	for _, v := range m {
@@ -105,4 +131,25 @@ func analyzeDates(tweets []twitter.Tweet) {
 	fmt.Println(" ")
 	fmt.Println("Daily activity distribution (per hour)")
 	analyzeHours(tweets)
+}
+
+func printTimeRetweets(dates map[string]int) {
+	lowest, highest := getHigherValueOfMap(dates)
+
+	for k, v := range dates {
+		fmt.Print(k + "	-	" + strconv.Itoa(v) + "tw")
+		fmt.Print("	")
+		printBarRetweets(v, lowest, highest)
+	}
+}
+
+func analyzeTimeRetweets(tweets []twitter.Tweet) {
+	var dates = make(map[string]int)
+	for _, v := range tweets {
+		/*time := strings.Split(v.CreatedAt, " ")[3]
+		hour := strings.Split(time, ":")[0]*/
+		dates[v.CreatedAt]++
+	}
+	printTimeRetweets(dates)
+	//printSortedMapStringInt(dates, 0)
 }

@@ -32,6 +32,8 @@ https://en.wikipedia.org/wiki/Panopticon
 5. Delete Favs (Likes)
 6. Random tweet
     - post a tweet with content from a selected account
+7. Tweet analyzer
+    - analyze the retweets and detect Bots
 
 ![screen](https://raw.githubusercontent.com/arnaucode/argos/master/screen3.png "screen")
 
