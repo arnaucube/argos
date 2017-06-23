@@ -62,5 +62,6 @@ func optionAnalyzeUserTweets(client *twitter.Client) {
 	fmt.Println(" ")
 	fmt.Print("User @")
 	c.Cyan(username)
+	analyzeUserAccount(client, username)
 	fmt.Println(" analysis finished")
 }
