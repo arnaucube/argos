@@ -26,6 +26,9 @@ func optionAnalyzeUserTweets(client *twitter.Client) {
 		fmt.Println("User @" + username + " does not have tweets")
 		return
 	}
+
+	analyzeUserAccount(client, username)
+
 	//now analyze words and dates
 	fmt.Println("Word frequency (more than " + strconv.Itoa(minNumWords) + " times):")
 	words := analyzeWords(tweets)
@@ -62,6 +65,6 @@ func optionAnalyzeUserTweets(client *twitter.Client) {
 	fmt.Println(" ")
 	fmt.Print("User @")
 	c.Cyan(username)
-	analyzeUserAccount(client, username)
+	//analyzeUserAccount(client, username)
 	fmt.Println(" analysis finished")
 }
