@@ -16,6 +16,29 @@ type DateRT struct {
 	Date     string
 }
 
+func printDateRT(v DateRT) {
+	fmt.Print("\x1b[32;1m" + v.Date + "\x1b[0m")
+	fmt.Println("	" + strconv.Itoa(len(v.Retweets)) + " Retweets at this date:")
+	for _, retweet := range v.Retweets {
+		source := strings.Split(strings.Split(retweet.Source, ">")[1], "<")[0]
+		if len(v.Retweets) > 1 {
+			fmt.Print("\x1b[31;1m") //red
+		}
+		fmt.Print("	@" + retweet.User.ScreenName)
+		fmt.Print("\x1b[0m") //defaultColor
+		fmt.Print("	(ID: ")
+		fmt.Print("\x1b[31;1m" + retweet.User.IDStr + "\x1b[0m)")
+		fmt.Print(",	source: \x1b[33;1m" + source + "\x1b[0m")
+		fmt.Print(",	user created at: \x1b[32;1m" + retweet.User.CreatedAt + "\x1b[0m,")
+
+		fmt.Print("	\x1b[34;1m" + strconv.Itoa(retweet.User.FollowersCount) + "\x1b[0m followers")
+		fmt.Print(", \x1b[34;1m" + strconv.Itoa(retweet.User.FriendsCount) + "\x1b[0m following")
+		fmt.Println("")
+	}
+	fmt.Println("")
+
+}
+
 func optionAnalyzeTweet(client *twitter.Client) {
 	newcommand := bufio.NewReader(os.Stdin)
 	fmt.Print("enter link of the tweet: ")
@@ -38,6 +61,8 @@ func optionAnalyzeTweet(client *twitter.Client) {
 	}
 	fmt.Print("tweet text: ")
 	c.Yellow(tweet.Text)
+	fmt.Print("tweet date: ")
+	c.Green(tweet.CreatedAt)
 
 	retweets := getRetweets(client, tweetId)
 
@@ -73,26 +98,4 @@ func optionAnalyzeTweet(client *twitter.Client) {
 	}
 	fmt.Println("")
 	c.Purple("Warning: Twitter API only gives the last 100 Retweets")
-}
-func printDateRT(v DateRT) {
-	fmt.Print("\x1b[32;1m" + v.Date + "\x1b[0m")
-	fmt.Println("	" + strconv.Itoa(len(v.Retweets)) + " Retweets at this date:")
-	for _, retweet := range v.Retweets {
-		source := strings.Split(strings.Split(retweet.Source, ">")[1], "<")[0]
-		if len(v.Retweets) > 1 {
-			fmt.Print("\x1b[31;1m") //red
-		}
-		fmt.Print("	@" + retweet.User.ScreenName)
-		fmt.Print("\x1b[0m") //defaultColor
-		fmt.Print("	(ID: ")
-		fmt.Print("\x1b[31;1m" + retweet.User.IDStr + "\x1b[0m)")
-		fmt.Print(",	source: \x1b[33;1m" + source + "\x1b[0m")
-		fmt.Print(",	user created at: \x1b[32;1m" + retweet.User.CreatedAt + "\x1b[0m,")
-
-		fmt.Print("	\x1b[34;1m" + strconv.Itoa(retweet.User.FollowersCount) + "\x1b[0m followers")
-		fmt.Print(", \x1b[34;1m" + strconv.Itoa(retweet.User.FriendsCount) + "\x1b[0m following")
-		fmt.Println("")
-	}
-	fmt.Println("")
-
 }
