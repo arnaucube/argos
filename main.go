@@ -67,6 +67,7 @@ func main() {
 	5 - Delete Favs (Likes)
 	6 - Tweet Random
 	7 - Analyze tweet
+	8 - Analyze User Followers
 	0 - Exit script
 option to select: `
 	for {
@@ -78,7 +79,8 @@ option to select: `
 		switch option {
 		case "1":
 			fmt.Println("selected 1 - Analyze username")
-			optionAnalyzeUserTweets(client)
+			username := askForUsername()
+			optionAnalyzeUserTweets(client, username)
 			fmt.Println("")
 			c.Purple("Note: the current hours displaying, are the Twitter servers hours (Coordinated Universal Time (UTC) +0000 UTC)")
 			break
@@ -105,6 +107,11 @@ option to select: `
 		case "7":
 			fmt.Println("selected 7 - Analyze Tweet")
 			optionAnalyzeTweet(client)
+			break
+		case "8":
+			fmt.Println("selected 8 - Analyze User Followers")
+			username := askForUsername()
+			optionAnalyzeUserFollowers(client, username)
 			break
 		case "0":
 			fmt.Println("selected 0 - exit script")

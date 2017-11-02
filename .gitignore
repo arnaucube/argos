@@ -25,5 +25,6 @@ _testmain.go
 
 
 twitterConfig.json
+twitterConfig2.json
 #build/twitterConfig.json
 temp

@@ -1,23 +1,13 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
-	"strings"
 
 	"github.com/dghubble/go-twitter/twitter"
 )
 
-func optionAnalyzeUserTweets(client *twitter.Client) {
-	newcommand := bufio.NewReader(os.Stdin)
-	fmt.Print("enter username: @")
-	username, _ := newcommand.ReadString('\n')
-	username = strings.TrimSpace(username)
-	fmt.Print("user selected: ")
-	c.Cyan("@" + username)
-	fmt.Println("-----------------------")
+func optionAnalyzeUserTweets(client *twitter.Client, username string) {
 
 	//get tweets
 	tweets := getTweets(client, username, iterationsCount)
