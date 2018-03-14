@@ -7,6 +7,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/dghubble/go-twitter/twitter"
 )
@@ -28,7 +29,11 @@ func printDateRT(v DateRT) {
 		fmt.Print("\x1b[0m") //defaultColor
 		fmt.Print("	(ID: ")
 		fmt.Print("\x1b[31;1m" + retweet.User.IDStr + "\x1b[0m)")
-		fmt.Print(",	source: \x1b[33;1m" + source + "\x1b[0m")
+		if source == "TweetDeck" {
+			fmt.Print(",	source: \x1b[33;1m" + source + "\x1b[0m")
+		} else {
+			fmt.Print(",	source: " + source)
+		}
 		fmt.Print(",	user created at: \x1b[32;1m" + retweet.User.CreatedAt + "\x1b[0m,")
 
 		fmt.Print("	\x1b[34;1m" + strconv.Itoa(retweet.User.FollowersCount) + "\x1b[0m followers")
@@ -68,12 +73,16 @@ func optionAnalyzeTweet(client *twitter.Client) {
 
 	var dates = make(map[string]DateRT)
 	for _, retweet := range retweets {
-		retws := dates[retweet.CreatedAt].Retweets
+		createdat, err := retweet.CreatedAtTime()
+		check(err)
+		createdatRounded := time.Date(createdat.Year(), createdat.Month(), createdat.Day(), createdat.Hour(), createdat.Minute(), 0, 0, createdat.Location())
+
+		retws := dates[createdatRounded.String()].Retweets
 		retws = append(retws, retweet)
 		var currDate DateRT
 		currDate.Retweets = retws
-		currDate.Date = retweet.CreatedAt
-		dates[retweet.CreatedAt] = currDate
+		currDate.Date = createdatRounded.String()
+		dates[createdatRounded.String()] = currDate
 	}
 	fmt.Println("total of " + strconv.Itoa(len(retweets)) + " retweets")
 

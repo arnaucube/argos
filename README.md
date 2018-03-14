@@ -7,6 +7,9 @@ Be half bot and half human, a new generation of cyborgs
 
 The user analyzer features are insipired on the Python tweets_analyzer by x0rz https://github.com/x0rz/tweets_analyzer
 
+#### [Disclamer]
+This software was made to learn the Go syntax, it works, but the implementation is not in the optimal way. I don't have time to maintain it.
+
 #### Argos Panoptes
 https://en.wikipedia.org/wiki/Argus_Panoptes
 
@@ -15,7 +18,6 @@ https://en.wikipedia.org/wiki/Panopticon
 
 ![Argos](https://raw.githubusercontent.com/arnaucode/argos/master/argos.jpg "argos")
 
-[under development]
 
 #### Current features
 1. User analyzer
